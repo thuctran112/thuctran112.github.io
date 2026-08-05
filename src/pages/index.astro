@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CaseStudyCard from "../components/CaseStudyCard.astro";
+import { getCollection } from "astro:content";
+
+const caseStudies = (await getCollection("caseStudies")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Layout title="Melody Tran — Product Designer">
+  <main>
+    <section class="grid" aria-label="Case studies">
+      {
+        caseStudies.map((study) => (
+          <CaseStudyCard
+            slug={study.id}
+            title={study.data.title}
+            summary={study.data.summary}
+            timeframe={study.data.timeframe}
+            platform={study.data.platform}
+            isProtected={study.data.protected}
+            company={study.data.company}
+            logo={study.data.logo}
+            accent={study.data.accent}
+            cover={study.data.cover}
+          />
+        ))
+      }
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: var(--space-3);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  @media (max-width: 700px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,186 @@
+---
+interface Props {
+  title: string;
+  images: { src: string; alt: string }[];
+}
+
+const { title, images } = Astro.props;
+const id = Math.random().toString(36).substr(2, 9);
+---
+
+<div class="carousel-container">
+  <h4 class="carousel-title">{title}</h4>
+  <div class="carousel-wrapper">
+    <div class="carousel" id={`carousel-${id}`}>
+      {images.map((image, index) => (
+        <div class="carousel-slide" data-index={index}>
+          <img src={image.src} alt={image.alt} />
+        </div>
+      ))}
+    </div>
+    <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">←</button>
+    <button class="carousel-btn carousel-btn-next" aria-label="Next slide">→</button>
+    <div class="carousel-dots">
+      {images.map((_, index) => (
+        <button
+          class={`carousel-dot ${index === 0 ? 'active' : ''}`}
+          data-index={index}
+          aria-label={`Go to slide ${index + 1}`}
+        />
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .carousel-container {
+    margin: 2.5rem 0;
+  }
+
+  .carousel-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--fg);
+  }
+
+  .carousel-wrapper {
+    position: relative;
+    width: 100%;
+    background: var(--surface);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .carousel {
+    display: flex;
+    width: 100%;
+    height: 400px;
+    scroll-behavior: smooth;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+  }
+
+  .carousel-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s;
+  }
+
+  .carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .carousel-btn-prev {
+    left: 0;
+  }
+
+  .carousel-btn-next {
+    right: 0;
+  }
+
+  .carousel-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .carousel-dot.active {
+    background: rgba(255, 255, 255, 1);
+  }
+
+  .carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 600px) {
+    .carousel {
+      height: 250px;
+    }
+
+    .carousel-btn {
+      padding: 0.5rem 0.75rem;
+      font-size: 1.25rem;
+    }
+  }
+</style>
+
+<script define:vars={{ id }}>
+  const carousel = document.getElementById(`carousel-${id}`);
+  const slides = carousel.querySelectorAll('.carousel-slide');
+  const prevBtn = carousel.parentElement.querySelector('.carousel-btn-prev');
+  const nextBtn = carousel.parentElement.querySelector('.carousel-btn-next');
+  const dots = carousel.parentElement.querySelectorAll('.carousel-dot');
+
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    showSlide((currentIndex + 1) % slides.length);
+  }
+
+  function prevSlide() {
+    showSlide((currentIndex - 1 + slides.length) % slides.length);
+  }
+
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => showSlide(index));
+  });
+
+  // Show first slide
+  showSlide(0);
+</script>

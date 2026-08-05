@@ -1,0 +1,200 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About — Melody Tran" description="A little about Melody Tran.">
+  <main>
+    <div class="content-with-image">
+      <div class="photo-container">
+        <img src="/about-photo.jpg" alt="Melody Tran" class="about-photo" />
+      </div>
+
+      <div class="text-section">
+        <p class="lead">Hi, I'm Melody.</p>
+
+        <p>
+          I'm a product designer who's spent most of my life figuring things out
+          without a clear map.
+        </p>
+
+        <p>
+          My work lives where systems thinking, strategy, and craft overlap, and I
+          enjoy making things feel simple without losing what makes them work.
+          I've spent the past several years testing that instinct on complex
+          enterprise products. The same instinct comes just as much from the
+          patience and structure I first learned through practicing and teaching
+          piano.
+        </p>
+
+        <p>
+          Outside of work, I'm usually chasing the same feeling, figuring
+          something out for the first time:
+        </p>
+
+        <ul>
+          <li>Traveling</li>
+          <li>Snorkeling</li>
+          <li>Escape rooms and board games</li>
+        </ul>
+
+        <p>
+          If you'd like to talk about my work, or any of the projects here, I'd
+          love to <a href="mailto:yenthuc.tran112@gmail.com">hear from you</a>.
+        </p>
+
+        <a class="resume" href="/melody-tran-resume.pdf" download>
+          Download résumé
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 3v10m0 0l-4-4m4 4l4-4M4 16h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-5) var(--space-3) var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .lead {
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0 0 var(--space-2) 0;
+  }
+
+  .content-with-image {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .text-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .photo-container {
+    position: relative;
+    width: 100%;
+  }
+
+
+  .photo-container::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 22px;
+    background: radial-gradient(circle at 35% 30%, #ff8a8a 0%, #ff6b6b 40%, #e63946 70%, #a4161a 100%);
+    border-radius: 50%;
+    box-shadow:
+      0 6px 14px rgba(230, 57, 70, 0.4),
+      0 2px 4px rgba(0, 0, 0, 0.4),
+      inset -2px -2px 4px rgba(0, 0, 0, 0.25),
+      inset 2px 2px 3px rgba(255, 255, 255, 0.4),
+      0 0 8px rgba(255, 107, 107, 0.3);
+    z-index: 10;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+  }
+
+  .about-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    transform: rotate(-2deg);
+    box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    display: block;
+    position: relative;
+    filter: contrast(1.05) brightness(0.98);
+  }
+
+  .about-photo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--fg);
+    margin: 0;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    padding-left: 1.25em;
+    list-style: disc;
+  }
+
+  li::marker {
+    color: var(--muted);
+  }
+
+  a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .resume {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    align-self: flex-start;
+    margin-top: var(--space-2);
+    padding: 0.65em 1.1em;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    text-decoration: none;
+    transition:
+      transform var(--duration-fast) var(--ease),
+      border-color var(--duration-fast) var(--ease);
+  }
+
+  .resume:hover {
+    border-color: var(--fg);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 800px) {
+    .content-with-image {
+      grid-template-columns: 1fr;
+    }
+
+    .about-photo {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    main {
+      padding: var(--space-4) var(--space-2) var(--space-5);
+    }
+  }
+</style>

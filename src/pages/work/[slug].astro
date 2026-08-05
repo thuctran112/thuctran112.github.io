@@ -1,0 +1,344 @@
+---
+export const prerender = false;
+
+import Layout from "../../layouts/Layout.astro";
+import CaseStudyMeta from "../../components/CaseStudyMeta.astro";
+import PasswordGate from "../../components/PasswordGate.astro";
+import { getEntry, render } from "astro:content";
+import {
+  AUTH_COOKIE_MAX_AGE,
+  checkPassword,
+  cookieNameFor,
+  makeAuthToken,
+  verifyAuthToken,
+} from "../../lib/auth";
+
+const { slug } = Astro.params;
+const entry = slug ? await getEntry("caseStudies", slug) : undefined;
+
+if (!entry) {
+  return new Response("Not found", { status: 404 });
+}
+
+let unlocked = !entry.data.protected;
+let error = "";
+
+if (entry.data.protected) {
+  const cookieName = cookieNameFor(entry.id);
+  unlocked = verifyAuthToken(entry.id, Astro.cookies.get(cookieName)?.value);
+
+  if (!unlocked && Astro.request.method === "POST") {
+    const form = await Astro.request.formData();
+    const password = String(form.get("password") ?? "");
+
+    if (checkPassword(entry.id, password)) {
+      Astro.cookies.set(cookieName, makeAuthToken(entry.id), {
+        httpOnly: true,
+        secure: import.meta.env.PROD,
+        sameSite: "lax",
+        path: "/",
+        maxAge: AUTH_COOKIE_MAX_AGE,
+      });
+      unlocked = true;
+    } else {
+      error = "Incorrect password. Try again.";
+    }
+  }
+}
+
+const { Content } = unlocked
+  ? await render(entry)
+  : { Content: undefined };
+---
+
+<Layout title={`${entry.data.title} — Melody Tran`}>
+  <main>
+    <a class="back" href="/">
+      &larr; Back to all work
+    </a>
+    <span class="logo-chip">
+      <img class="logo-mark page-logo" src={`/logos/${entry.data.logo}.png`} alt={entry.data.company} />
+    </span>
+    {
+      unlocked ? (
+        <>
+          <h1>{entry.data.title}</h1>
+          <CaseStudyMeta
+            timeframe={entry.data.timeframe}
+            role={entry.data.role}
+            team={entry.data.team}
+            projectType={entry.data.projectType}
+            platform={entry.data.platform}
+            users={entry.data.users}
+          />
+          <div class="prose">
+            <Content />
+          </div>
+          <div class="project-info">
+            <p>
+              <strong>Note:</strong> The work shown here is confidential and cannot be shared in full detail. I'm happy to discuss my design process, approach, and the insights I gained from this project over a call. Feel free to reach out at <a href="mailto:yenthuc.tran112@gmail.com">yenthuc.tran112@gmail.com</a> to connect.
+            </p>
+          </div>
+        </>
+      ) : (
+        <PasswordGate title={entry.data.title} error={error} />
+      )
+    }
+  </main>
+</Layout>
+
+<style>
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--space-5) var(--space-3) var(--space-6);
+    width: 100%;
+  }
+
+  .back {
+    display: inline-block;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .back:hover {
+    color: var(--fg);
+  }
+
+  .logo-chip {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.6rem 0.85rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .page-logo {
+    height: 2rem;
+    width: 6.5rem;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center;
+    margin: 0;
+    align-self: center;
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-4);
+  }
+
+  .project-info {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .project-info p {
+    margin: 0;
+  }
+
+  .project-info a {
+    color: var(--fg);
+    text-decoration: underline;
+  }
+
+  .project-info a:hover {
+    opacity: 0.7;
+  }
+
+  @media (max-width: 600px) {
+    main {
+      padding: var(--space-4) var(--space-2) var(--space-5);
+    }
+  }
+</style>
+
+<style is:global>
+  .prose {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .prose h2 {
+    font-size: 1.375rem;
+    margin-bottom: 0;
+    line-height: 1.2;
+    margin-top: var(--space-5);
+  }
+
+  .prose h2:first-of-type,
+  .prose p:has(+ h2) + h2 {
+    margin-top: 0;
+  }
+
+  .prose h2 + p {
+    margin-top: -0.5rem;
+  }
+
+  .prose p:has(+ h2) {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #5a7cfc;
+    font-weight: 600;
+    margin-bottom: -0.75rem;
+    margin-top: var(--space-5) !important;
+  }
+
+  .prose p:has(+ h2):first-of-type {
+    margin-top: 0 !important;
+  }
+
+  .prose p,
+  .prose li {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .prose p + p {
+    margin-top: var(--space-2);
+  }
+
+  .prose strong {
+    font-weight: 600;
+  }
+
+  .prose ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-left: 1.25em;
+    list-style: disc;
+  }
+
+  .prose li::marker {
+    color: var(--muted);
+  }
+
+  .prose blockquote {
+    margin: 0;
+    padding-left: var(--space-2);
+    border-left: 2px solid var(--border-strong);
+    color: var(--muted);
+  }
+
+  .prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-4) 0;
+  }
+
+  .prose th {
+    display: none;
+  }
+
+  .prose td {
+    padding: var(--space-3);
+    border: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prose tr:first-child td {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prose tr:last-child td {
+    border-bottom: none;
+  }
+
+  .prose td:first-child {
+    width: 200px;
+    padding-right: var(--space-4);
+    font-weight: 600;
+    color: var(--fg);
+    white-space: nowrap;
+  }
+
+  .prose td:last-child {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--fg);
+  }
+
+  /* Planning carousel styles */
+  .prose p:has(img) + p:has(img) {
+    margin-top: -1rem !important;
+  }
+
+  .prose img[alt*="Planning dashboard overview"],
+  .prose img[alt*="Load assignment"],
+  .prose img[alt*="Drag-and-drop"],
+  .prose img[alt*="Timeline and status"],
+  .prose img[alt*="Order details and live"] {
+    height: 450px;
+    background: var(--surface);
+    border-radius: 4px;
+    display: block;
+  }
+
+  @media (max-width: 600px) {
+    .prose img[alt*="Planning dashboard overview"],
+    .prose img[alt*="Load assignment"],
+    .prose img[alt*="Drag-and-drop"],
+    .prose img[alt*="Timeline and status"],
+    .prose img[alt*="Order details and live"] {
+      height: 280px;
+    }
+  }
+
+</style>
+
+<script>
+  function initCarousel(carouselId) {
+    const carousel = document.getElementById(carouselId);
+    if (!carousel) return;
+
+    const container = carousel.parentElement;
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const prevBtn = container.querySelector('.carousel-btn-prev');
+    const nextBtn = container.querySelector('.carousel-btn-next');
+    const dots = container.querySelectorAll('.carousel-dot');
+
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+      currentIndex = index;
+    }
+
+    function nextSlide() {
+      showSlide((currentIndex + 1) % slides.length);
+    }
+
+    function prevSlide() {
+      showSlide((currentIndex - 1 + slides.length) % slides.length);
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => showSlide(index));
+    });
+  }
+
+  // Initialize all carousels
+  document.addEventListener('DOMContentLoaded', () => {
+    initCarousel('planning-carousel');
+  });
+</script>

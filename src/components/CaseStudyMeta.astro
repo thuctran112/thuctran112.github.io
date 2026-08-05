@@ -1,0 +1,63 @@
+---
+interface Props {
+  timeframe: string;
+  role: string;
+  team: string;
+  projectType: string;
+  platform: string;
+  users: string;
+}
+
+const { timeframe, role, team, projectType, platform, users } = Astro.props;
+
+const rows = [
+  { label: "Year", value: timeframe },
+  { label: "Role", value: role },
+  { label: "Team", value: team },
+  { label: "Project type", value: projectType },
+  { label: "Platform", value: platform },
+  { label: "Users", value: users },
+];
+---
+
+<dl class="meta">
+  {
+    rows.map((row) => (
+      <div class="row">
+        <dt>{row.label}</dt>
+        <dd>{row.value}</dd>
+      </div>
+    ))
+  }
+</dl>
+
+<style>
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--space-3) var(--space-4);
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin: 0 0 var(--space-6);
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
+  }
+
+  dt {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  dd {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+</style>

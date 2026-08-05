@@ -1,0 +1,131 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  summary: string;
+  timeframe: string;
+  platform: string;
+  isProtected: boolean;
+  company: string;
+  logo: string;
+  accent: string;
+  cover: string;
+}
+
+const {
+  slug,
+  title,
+  summary,
+  timeframe,
+  platform,
+  isProtected,
+  company,
+  logo,
+  accent,
+  cover,
+} = Astro.props;
+---
+
+<div class="card-wrapper">
+  <a class="card" href={`/work/${slug}/`} style={`--card-accent: ${accent}`}>
+    <div class="card-image-container">
+      <img class="card-cover" src={`/covers/${cover}`} alt={title} />
+    </div>
+  </a>
+  <div class="card-title-row">
+    {isProtected && <span class="lock-icon">🔒</span>}
+    <span class="title-text">
+      <span class="company-name">{company}</span>
+      <span class="separator"> • </span>
+      <span class="project-title">{title}</span>
+    </span>
+  </div>
+</div>
+
+<style>
+  .card-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--bg);
+    transition:
+      transform var(--duration-med) var(--ease),
+      border-color var(--duration-med) var(--ease),
+      box-shadow var(--duration-med) var(--ease);
+    will-change: transform;
+  }
+
+  .card:hover,
+  .card:focus-visible {
+    transform: translateY(-6px);
+    border-color: var(--border-strong);
+    box-shadow: 0 12px 24px -16px rgba(0, 0, 0, 0.35);
+  }
+
+  .card:focus-visible {
+    outline: 2px solid var(--fg);
+    outline-offset: 3px;
+  }
+
+  .card-image-container {
+    overflow: hidden;
+  }
+
+  .card-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.6;
+    object-fit: cover;
+  }
+
+  .card-title-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) 0;
+  }
+
+  .lock-icon {
+    font-size: 0.875rem;
+    flex-shrink: 0;
+  }
+
+  .title-text {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+  }
+
+  .company-name {
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  .separator {
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .project-title {
+    color: var(--fg);
+    font-weight: 400;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card:hover,
+    .card:focus-visible {
+      transform: none;
+    }
+  }
+</style>

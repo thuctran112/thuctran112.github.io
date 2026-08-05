@@ -1,0 +1,80 @@
+---
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? path === "/" : path.startsWith(href);
+---
+
+<header class="site-header">
+  <a href="/" class="header-left">
+    <h1 class="site-name">Melody Tran</h1>
+    <p class="site-tagline">I make complicated things feel obvious.</p>
+  </a>
+  <nav aria-label="Primary" class="header-nav">
+    <a href="/" aria-current={isActive("/") ? "page" : undefined}>Works</a>
+    <a href="/about/" aria-current={isActive("/about") ? "page" : undefined}>About</a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: var(--space-3) var(--space-3);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .site-name {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .site-tagline {
+    font-size: 0.9375rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .header-nav {
+    display: flex;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  .header-nav a {
+    font-size: 0.9375rem;
+    color: var(--muted);
+    transition: color var(--duration-fast) var(--ease);
+  }
+
+  .header-nav a:hover {
+    color: var(--fg);
+  }
+
+  .header-nav a[aria-current="page"] {
+    color: var(--fg);
+  }
+
+  @media (max-width: 600px) {
+    .site-header {
+      padding: var(--space-2) var(--space-2);
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .header-nav {
+      width: 100%;
+    }
+  }
+</style>

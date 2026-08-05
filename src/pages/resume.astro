@@ -1,0 +1,76 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Resume — Melody Tran">
+  <main class="resume-page">
+    <div class="resume-container">
+      <iframe
+        src="/melody-tran-resume.pdf"
+        title="Melody Tran Resume"
+        class="resume-embed"
+      ></iframe>
+    </div>
+    <div class="resume-download">
+      <a href="/melody-tran-resume.pdf" download class="download-btn">
+        Download Resume
+      </a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-3);
+    min-height: calc(100vh - 400px);
+  }
+
+  .resume-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+  }
+
+  .resume-embed {
+    width: 100%;
+    height: 800px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .resume-download {
+    display: flex;
+    justify-content: center;
+    padding: var(--space-4) 0;
+  }
+
+  .download-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--fg);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: all var(--duration-fast) var(--ease);
+  }
+
+  .download-btn:hover {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+
+  @media (max-width: 600px) {
+    main {
+      padding: var(--space-2);
+    }
+
+    .resume-embed {
+      height: 600px;
+    }
+  }
+</style>
