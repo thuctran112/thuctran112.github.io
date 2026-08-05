@@ -57,12 +57,6 @@ Working under a fixed deadline with one designer for most of the project, I part
 IDEATION
 ## Prioritizing features strategically
 
-![swift-order-screen-lofi](../../assets/case-studies/swift/ideation/swift-order-screen-lofi.jpg)
-<div style="text-align: center; margin-top: -0.75rem;">
-Order Screen Lofi Ideation 
-</div>
-
-
 
 ![Swift ideation 2](../../assets/case-studies/swift/ideation/swift-ideation%202.jpg)
 ![Swift ideation 3](../../assets/case-studies/swift/ideation/swift-ideation%203.jpg)
