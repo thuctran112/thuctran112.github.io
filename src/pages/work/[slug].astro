@@ -3,15 +3,8 @@ export const prerender = false;
 
 import Layout from "../../layouts/Layout.astro";
 import CaseStudyMeta from "../../components/CaseStudyMeta.astro";
-import PasswordGate from "../../components/PasswordGate.astro";
+import ClientPasswordGate from "../../components/ClientPasswordGate.astro";
 import { getEntry, render } from "astro:content";
-import {
-  AUTH_COOKIE_MAX_AGE,
-  checkPassword,
-  cookieNameFor,
-  makeAuthToken,
-  verifyAuthToken,
-} from "../../lib/auth";
 
 const { slug } = Astro.params;
 const entry = slug ? await getEntry("caseStudies", slug) : undefined;
@@ -20,35 +13,7 @@ if (!entry) {
   return new Response("Not found", { status: 404 });
 }
 
-let unlocked = !entry.data.protected;
-let error = "";
-
-if (entry.data.protected) {
-  const cookieName = cookieNameFor(entry.id);
-  unlocked = verifyAuthToken(entry.id, Astro.cookies.get(cookieName)?.value);
-
-  if (!unlocked && Astro.request.method === "POST") {
-    const form = await Astro.request.formData();
-    const password = String(form.get("password") ?? "");
-
-    if (checkPassword(entry.id, password)) {
-      Astro.cookies.set(cookieName, makeAuthToken(entry.id), {
-        httpOnly: true,
-        secure: import.meta.env.PROD,
-        sameSite: "lax",
-        path: "/",
-        maxAge: AUTH_COOKIE_MAX_AGE,
-      });
-      unlocked = true;
-    } else {
-      error = "Incorrect password. Try again.";
-    }
-  }
-}
-
-const { Content } = unlocked
-  ? await render(entry)
-  : { Content: undefined };
+const { Content } = await render(entry);
 ---
 
 <Layout title={`${entry.data.title} — Melody Tran`}>
@@ -59,34 +24,29 @@ const { Content } = unlocked
     <span class="logo-chip">
       <img class="logo-mark page-logo" src={`/logos/${entry.data.logo}.png`} alt={entry.data.company} />
     </span>
-    {
-      unlocked ? (
-        <>
-          <h1>{entry.data.title}</h1>
-          <CaseStudyMeta
-            timeframe={entry.data.timeframe}
-            role={entry.data.role}
-            team={entry.data.team}
-            projectType={entry.data.projectType}
-            platform={entry.data.platform}
-            users={entry.data.users}
-          />
-          <div class="prose">
-            <Content />
-          </div>
-          <div class="project-info">
-            <p>
-              <strong>Note:</strong> The work shown here is confidential and cannot be shared in full detail. I'm happy to discuss my design process, approach, and the insights I gained from this project over a call. Feel free to reach out at <a href="mailto:yenthuc.tran112@gmail.com">yenthuc.tran112@gmail.com</a> to connect.
-            </p>
-          </div>
-        </>
-      ) : (
-        <PasswordGate title={entry.data.title} error={error} />
-      )
-    }
+    <ClientPasswordGate>
+      <h1>{entry.data.title}</h1>
+      <CaseStudyMeta
+        timeframe={entry.data.timeframe}
+        role={entry.data.role}
+        team={entry.data.team}
+        projectType={entry.data.projectType}
+        platform={entry.data.platform}
+        users={entry.data.users}
+      />
+      <div class="prose">
+        <Content />
+      </div>
+      <div class="project-info">
+        <p>
+          <strong>Note:</strong> The work shown here is confidential and cannot be shared in full detail. I'm happy to discuss my design process, approach, and the insights I gained from this project over a call. Feel free to reach out at <a href="mailto:yenthuc.tran112@gmail.com">yenthuc.tran112@gmail.com</a> to connect.
+        </p>
+      </div>
+    </ClientPasswordGate>
   </main>
 </Layout>
 
+<!-- Rest of the styles and scripts stay exactly the same -->
 <style>
   main {
     max-width: 720px;
