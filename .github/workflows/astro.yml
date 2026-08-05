@@ -7,6 +7,7 @@ on:
 
 env:
   BUILD_PATH: "."
+  NODE_VERSION: "22"
 
 jobs:
   build:
@@ -15,6 +16,10 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
       - name: Install, build, and upload your site
         uses: withastro/action@v2
 
