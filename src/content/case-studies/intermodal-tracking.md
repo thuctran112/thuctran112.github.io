@@ -87,9 +87,9 @@ SOLUTION
 <h3 style="margin-top: 3rem;">Planning Redesign</h3>
 
 **Designed interface** (modern planning dashboard with drag-and-drop scheduling)
-![Planning redesign screen 1](../../assets/case-studies/swift/the-solution/planning-1.jpg)
+![Planning redesign screen 1](../../assets/case-studies/swift/the-solution/planning-1.png)
 
-![Planning redesign screen 2](../../assets/case-studies/swift/the-solution/planning-3.jpg)
+![Planning redesign screen 2](../../assets/case-studies/swift/the-solution/planning-3.png)
 
 
 OUTCOME
