@@ -3,8 +3,13 @@
 import Layout from "../../layouts/Layout.astro";
 import CaseStudyMeta from "../../components/CaseStudyMeta.astro";
 import ClientPasswordGate from "../../components/ClientPasswordGate.astro";
-import { getEntry, render } from "astro:content";
-
+import { getEntry, render, getCollection } from "astro:content";
+export async function getStaticPaths() {
+  const entries = await getCollection('caseStudies');
+  return entries.map(entry => ({
+    params: { slug: entry.id },
+  }));
+}
 const { slug } = Astro.params;
 const entry = slug ? await getEntry("caseStudies", slug) : undefined;
 
