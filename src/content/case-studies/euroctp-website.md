@@ -46,11 +46,9 @@ IDEATION
 ## Key decisions
 *Critical choices that shaped the project direction*
 
-**Investment by strategic value:** Prioritized design effort on pages with the highest regulatory and revenue impact (homepage, instrument page) while templating supporting sections.
-
-**One page, multiple views:** Built separate navigation paths for institutional users while keeping core market data pages shared. Added a complexity toggle so the instrument page scaled from retail to professional-grade in one structure.
-
-**Sustainability constraint:** Balanced real-time data delivery with carbon footprint goals by adding user controls (adjustable refresh rates, dark mode) for data consumption.
+- **Investment by strategic value:** Prioritized design effort on pages with the highest regulatory and revenue impact (homepage, instrument page) while templating supporting sections.
+- **One page, multiple views:** Built separate navigation paths for institutional users while keeping core market data pages shared. Added a complexity toggle so the instrument page scaled from retail to professional-grade in one structure.
+- **Sustainability constraint:** Balanced real-time data delivery with carbon footprint goals by adding user controls (adjustable refresh rates, dark mode) for data consumption.
 
 
 ## The solution
@@ -64,14 +62,12 @@ IDEATION
 
 OUTCOME
 
-## Outcome
-*Results achieved and impact measured*
+## Shipped with strong client feedback
 
 The project shipped and was handed off at the end of the client engagement, with strong positive feedback from EuroCTP.
 
 REFLECTION
 
-## Reflection
-*Key learnings and what I'd do differently*
+## User research would have validated assumptions
 
 Looking back, I'd have pushed for user research and usability testing if budget allowed. The design was based on stakeholder requirements and assumptions rather than direct user testing.

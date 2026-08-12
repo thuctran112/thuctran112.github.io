@@ -41,7 +41,7 @@ Led the competitive analysis research, and led the map redesign work on how stat
 ## Key decisions
 *Critical choices that shaped the project direction*
 
-**Working with host-owned data:** Most stations are owned by third-party hosts, so data consistency and naming are outside ChargePoint's control. The design focused on reliably communicating availability and charge speed while downplaying unreliable details.
+- **Working with host-owned data:** Most stations are owned by third-party hosts, so data consistency and naming are outside ChargePoint's control. The design focused on reliably communicating availability and charge speed while downplaying unreliable details.
 
 
 ## The solution
@@ -52,14 +52,12 @@ Led the competitive analysis research, and led the map redesign work on how stat
 
 OUTCOME
 
-## Outcome
-*Results achieved and impact measured*
+## Approved and handed off to development
 
 The project was approved and moved into development. I handed the work off when I moved to the next engagement, so I don't have visibility into how it performed after launch.
 
 REFLECTION
 
-## Reflection
-*Key learnings and what I'd do differently*
+## Testing assumptions with users would have strengthened the design
 
 The timeline was tight: stakeholders needed a prototype quickly to pitch the project's potential to their directors, which meant the team designed against assumptions rather than validating with real users first. Looking back, I'd have pushed to test those assumptions with real users before finalizing the design.
