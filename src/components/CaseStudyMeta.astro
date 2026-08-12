@@ -2,18 +2,21 @@
 interface Props {
   timeframe: string;
   role: string;
-  team: string;
+  team?: string;
+  collaboration?: string;
   projectType: string;
   platform: string;
   users: string;
 }
 
-const { timeframe, role, team, projectType, platform, users } = Astro.props;
+const { timeframe, role, team, collaboration, projectType, platform, users } = Astro.props;
+const teamValue = collaboration || team;
+const teamLabel = collaboration ? "Collaboration" : "Team";
 
 const rows = [
   { label: "Year", value: timeframe },
   { label: "Role", value: role },
-  { label: "Team", value: team },
+  { label: teamLabel, value: teamValue },
   { label: "Project type", value: projectType },
   { label: "Platform", value: platform },
   { label: "Users", value: users },
