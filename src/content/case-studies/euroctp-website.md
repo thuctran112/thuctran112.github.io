@@ -7,8 +7,8 @@ logo: euroctp
 accent: "#272c8c"
 cover: euroctp-cover.jpg
 timeframe: "2024"
-role: UX designer, working alongside a UX researcher
-team: UX researcher, myself as UX designer, client stakeholders
+role: UX designer
+collaboration: Project Manager, engineer team, UX researcher
 projectType: Institutional website / information architecture
 platform: Web
 users: Multiple distinct personas, corporate stakeholders, institutional clients, contributors, retail investors, and an educational/general audience
