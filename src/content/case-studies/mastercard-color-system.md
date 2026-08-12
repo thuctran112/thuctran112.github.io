@@ -18,14 +18,14 @@ protected: true
 CONTEXT
 
 ## The problem
-*Understanding the challenge and its business impact*
+*Accessibility failures across fragmented systems*
 
 Development teams regularly ran into accessibility contrast failures and inconsistent design across products, caused by disconnected, unmanaged internal design system libraries. This wasn't just a usability issue: accessibility compliance was something auditors actively checked for, making it a real business risk. My scope was to reconcile these libraries and create consistent, accessible color decisions across them.
 
 DISCOVERY
 
 ## The approach
-*Research, validation, and collaboration with engineering*
+*Testing standards and building engineering alignment*
 
 This project relied on accessibility research rather than user interviews. I tested contrast compliance against WCAG 2.1 AA using the WebAIM contrast checker, and worked directly with engineering on implementation.
 
@@ -33,7 +33,7 @@ This project relied on accessibility research rather than user interviews. I tes
 IDEATION
 
 ## My contribution
-*My specific role and responsibilities in the project*
+*Research, design system, and governance*
 
 - Researched accessibility contrast standards and data visualization best practices
 - Pushed to move data visualization and interactive components off the existing color palette
@@ -53,7 +53,7 @@ IDEATION
 
 
 ## The solution
-*What was built and how it solved the problem*
+*Accessible color system with dark mode*
 
 - **Accessible color system**: 16 base colors with at least 10 shades each, meeting contrast standards for interactive components and data visualization. Adoption required only updating existing color values, not rebuilding components, keeping implementation effort low for engineering.
 - **Figma library and guidelines**: documented for other designers to adopt independently
@@ -62,13 +62,13 @@ IDEATION
 OUTCOME
 
 ## Outcome
-*Results achieved and impact measured*
+*Adopted across 3 products, fully compliant*
 
 Developers used the new system to build charts and components, passing all accessibility testing. The palette was adopted across 3 internal products, with positive feedback from internal teams.
 
 REFLECTION
 
 ## Reflection
-*Key learnings and what I'd do differently*
+*From reactive to proactive auditing*
 
 The process was reactive rather than structured: we patched issues one at a time after discovering the old palette failed accessibility for data visualization, which cost both teams time. I'd check the existing palette against accessibility standards proactively and on a regular cadence, rather than waiting to find failures after the fact.
