@@ -45,11 +45,9 @@ IDEATION
 ## Key decisions
 *Critical choices that shaped the project direction*
 
-**Dedicated palette for data viz:** The existing palette failed contrast requirements. I advocated for building a new, accessible palette rather than working around the limitation.
-
-**Stakeholder alignment:** Engineering wanted to keep the old colors. I reframed the issue as a compliance risk and walked them through testing to get buy-in for the new system.
-
-**Scoping to contrast:** Full colorblind-safe encoding wasn't feasible in all components. I scoped to contrast compliance and used legends/labels as supplements.
+- **Dedicated palette for data viz:** The existing palette failed contrast requirements. I advocated for building a new, accessible palette rather than working around the limitation.
+- **Stakeholder alignment:** Engineering wanted to keep the old colors. I reframed the issue as a compliance risk and walked them through testing to get buy-in for the new system.
+- **Scoping to contrast:** Full colorblind-safe encoding wasn't feasible in all components. I scoped to contrast compliance and used legends/labels as supplements.
 
 
 ## The solution
