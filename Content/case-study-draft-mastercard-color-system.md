@@ -7,8 +7,8 @@
 **At a glance**
 - Year: 2025
 - Highlight: Design systems, accessibility, data visualization
-- Role: Sole designer on this project, within a larger design team where designers are assigned individually to projects; reported to a design lead who handled team management and stakeholder communication
-- Team: design lead, engineering team, myself as the designer assigned to this project
+- Role: UX Designer
+- Collaboration: engineering team, design lead, designers
 - Project type: Internal product color palette / accessibility initiative
 - Platform: Web (internal tools)
 - Users: Internal design and engineering teams across 3 Mastercard products
