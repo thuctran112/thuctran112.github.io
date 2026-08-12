@@ -59,14 +59,12 @@ IDEATION
 
 OUTCOME
 
-## Outcome
-*Adopted across 3 products, fully compliant*
+## Adopted across 3 products, fully compliant
 
 Developers used the new system to build charts and components, passing all accessibility testing. The palette was adopted across 3 internal products, with positive feedback from internal teams.
 
 REFLECTION
 
-## Reflection
-*From reactive to proactive auditing*
+## From reactive to proactive auditing
 
 The process was reactive rather than structured: we patched issues one at a time after discovering the old palette failed accessibility for data visualization, which cost both teams time. I'd check the existing palette against accessibility standards proactively and on a regular cadence, rather than waiting to find failures after the fact.
