@@ -7,8 +7,8 @@ logo: mastercard
 accent: "#eb051a"
 cover: mastercard-cover.jpg
 timeframe: "2025"
-role: Sole designer on this project, within a larger design team where designers are assigned individually to projects; reported to a design lead who handled team management and stakeholder communication
-team: Design lead, engineering team, myself as the designer assigned to this project
+role: UX designer
+collaboration: Design Lead, engineering team, Designer
 projectType: Internal product color palette / accessibility initiative
 platform: Web (internal tools)
 users: Internal design and engineering teams across 3 Mastercard products
