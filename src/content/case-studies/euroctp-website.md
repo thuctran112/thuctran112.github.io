@@ -18,7 +18,7 @@ protected: true
 CONTEXT
 
 ## The problem
-*Understanding the challenge and its business impact*
+*Seven distinct personas, one regulatory deadline*
 
 EuroCTP's system captures real-time pre- and post-trade data from every trading and reporting venue across the EU, bringing it together in one place: a complete, immediate view of all EU share and ETF trades, including the consolidated best buy and sell orders available at any moment. Its business model, shaped by European regulation, offers competitive pricing for professional users and free access for retail.
 
@@ -27,7 +27,7 @@ EuroCTP needed a single website serving several distinct audiences at once: expl
 DISCOVERY
 
 ## The approach
-*Research and strategy to address the problem*
+*Audit-based architecture for multi-persona website*
 
 Rather than user research, this project relied on an audit: working alongside a UX researcher, I went through existing materials and stakeholder requirements to clarify constraints across personas, then defined the information architecture and built a first version of the website's structure and dashboard.
 
@@ -35,7 +35,7 @@ Rather than user research, this project relied on an audit: working alongside a 
 IDEATION
 
 ## My contribution
-*My specific role and responsibilities in the project*
+*Information architecture and design system foundation*
 
 - Audited existing materials and stakeholder requirements to shape the site's information architecture
 - Designed the site's core structure end-to-end, including the homepage, dashboard, and instrument page
@@ -44,7 +44,7 @@ IDEATION
 
 
 ## Key decisions
-*Critical choices that shaped the project direction*
+*Strategic prioritization across personas and budget*
 
 - **Investment by strategic value:** Prioritized design effort on pages with the highest regulatory and revenue impact (homepage, instrument page) while templating supporting sections.
 - **One page, multiple views:** Built separate navigation paths for institutional users while keeping core market data pages shared. Added a complexity toggle so the instrument page scaled from retail to professional-grade in one structure.
@@ -52,7 +52,7 @@ IDEATION
 
 
 ## The solution
-*What was built and how it solved the problem*
+*Real-time data interface serving retail to professional users*
 
 - **Homepage and dashboard**: core structure designed to orient multiple distinct audiences, prioritized as the site's primary surface
 - **Instrument page**: the site's most data-dense screen, built with a complexity toggle so it could serve both retail and professional users from one structure
