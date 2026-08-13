@@ -44,16 +44,10 @@ const caseStudies = (await getCollection("caseStudies")).sort(
     gap: var(--space-3);
   }
 
-  .grid > :hover ~ *,
-  .grid > *:has(~ :hover) {
+  .card-wrapper.faded {
     opacity: 0.4;
     filter: grayscale(100%);
     transition: all 0.3s ease;
-  }
-
-  .grid > :hover {
-    opacity: 1;
-    filter: grayscale(0%);
   }
 
   @media (max-width: 700px) {
@@ -62,3 +56,24 @@ const caseStudies = (await getCollection("caseStudies")).sort(
     }
   }
 </style>
+
+<script>
+  const grid = document.querySelector('.grid');
+  const cardWrappers = grid.querySelectorAll('.card-wrapper');
+
+  cardWrappers.forEach((wrapper) => {
+    wrapper.addEventListener('mouseenter', () => {
+      cardWrappers.forEach((w) => {
+        if (w !== wrapper) {
+          w.classList.add('faded');
+        }
+      });
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      cardWrappers.forEach((w) => {
+        w.classList.remove('faded');
+      });
+    });
+  });
+</script>
