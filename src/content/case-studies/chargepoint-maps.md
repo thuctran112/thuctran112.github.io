@@ -12,7 +12,7 @@ team: Researcher, UI Designer, Designer, Product Owner
 projectType: Consumer mobility app, map and discovery feature
 platform: Mobile app
 users: EV drivers looking for available charging stations and nearby amenities
-protected: false
+protected: true
 ---
 
 CONTEXT
