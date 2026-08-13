@@ -9,6 +9,7 @@ cover: beni-cover.jpg
 timeframe: "Dec 2022 – Jan 2023"
 role: UX & visual designer, part of a 3-designer team (with 3 developers)
 team: 3 Designers, 3 Developers, 2 Founder Stakeholders
+metadata: Led 3-person design team • 16 user interviews
 projectType: Chrome browser extension, consumer product
 platform: Browser extension
 users: Online shoppers looking for secondhand alternatives while browsing retail sites

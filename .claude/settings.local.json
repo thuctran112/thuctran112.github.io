@@ -45,7 +45,12 @@
       "Bash(sips -s format jpg /Users/melodytran/Downloads/IMG_7363.heic --out /Users/melodytran/Desktop/Melody-portfolio/public/about-photo.jpg)",
       "Bash(sips -s format jpeg /Users/melodytran/Downloads/IMG_7363.heic --out /Users/melodytran/Desktop/Melody-portfolio/public/about-photo.jpg)",
       "Bash(npm list *)",
-      "Bash(sed -i '' ' *)"
+      "Bash(sed -i '' ' *)",
+      "Bash(git revert *)",
+      "mcp__visualize__read_me",
+      "mcp__visualize__show_widget",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }

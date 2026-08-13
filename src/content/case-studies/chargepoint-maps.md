@@ -9,6 +9,7 @@ cover: chargepoint-cover.jpg
 timeframe: "2025"
 role: Designer
 team: Researcher, UI Designer, Designer, Product Owner
+metadata: Research-driven discovery UX • Mobile-first
 projectType: Consumer mobility app, map and discovery feature
 platform: Mobile app
 users: EV drivers looking for available charging stations and nearby amenities

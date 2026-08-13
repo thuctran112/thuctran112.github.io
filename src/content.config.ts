@@ -11,6 +11,7 @@ const caseStudies = defineCollection({
     role: z.string(),
     team: z.string().optional(),
     collaboration: z.string().optional(),
+    metadata: z.string().optional(),
     projectType: z.string(),
     platform: z.string(),
     users: z.string(),

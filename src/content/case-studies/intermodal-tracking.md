@@ -9,6 +9,7 @@ cover: swift-cover.jpg
 timeframe: "2022–2023"
 role: Product designer
 team: Software Engineer, Project Manager, UX Researcher, UI Designer
+metadata: Research-driven redesign • Complex logistics interface
 projectType: Enterprise workflow redesign
 platform: Web
 users: Customer service and operations staff

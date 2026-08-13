@@ -10,6 +10,7 @@ interface Props {
   logo: string;
   accent: string;
   cover: string;
+  metadata?: string;
 }
 
 const {
@@ -23,6 +24,7 @@ const {
   logo,
   accent,
   cover,
+  metadata,
 } = Astro.props;
 ---
 
@@ -41,6 +43,7 @@ const {
     </span>
     <span class="card-arrow">→</span>
   </div>
+  {metadata && <div class="card-metadata">{metadata}</div>}
 </div>
 
 <style>
@@ -138,6 +141,19 @@ const {
     opacity: 1;
     transform: translateX(0);
     color: var(--fg);
+  }
+
+  .card-metadata {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    line-height: 1.4;
+    padding: 0 0 0.25rem 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .card-wrapper:hover .card-metadata {
+    opacity: 1;
   }
 
   @media (prefers-reduced-motion: reduce) {

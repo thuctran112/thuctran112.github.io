@@ -9,6 +9,7 @@ cover: mastercard-cover.jpg
 timeframe: "2025"
 role: UX designer
 collaboration: Design Lead, Engineering Team, Designer
+metadata: Turned compliance into design advantage
 projectType: Internal product color palette / accessibility initiative
 platform: Web (internal tools)
 users: Internal design and engineering teams across 3 Mastercard products

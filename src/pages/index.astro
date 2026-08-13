@@ -24,6 +24,7 @@ const caseStudies = (await getCollection("caseStudies")).sort(
             logo={study.data.logo}
             accent={study.data.accent}
             cover={study.data.cover}
+            metadata={study.data.metadata}
           />
         ))
       }
