@@ -9,124 +9,33 @@ const caseStudies = (await getCollection("caseStudies")).sort(
 ---
 
 <Layout title="Melody Tran — Product Designer">
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Melody Tran</h1>
-      <p class="hero-subtitle">Product designer who solves complex problems through research, systems thinking, and intentional design.</p>
-      <div class="hero-cta">
-        <a href="#work" class="cta-primary">View my work</a>
-        <a href="/about/" class="cta-secondary">About me</a>
-      </div>
-    </div>
-  </section>
-
   <main>
-    <section class="work-section" id="work">
-      <h2>Featured work</h2>
-      <div class="grid" aria-label="Case studies">
-        {
-          caseStudies.map((study) => (
-            <CaseStudyCard
-              slug={study.id}
-              title={study.data.title}
-              summary={study.data.summary}
-              timeframe={study.data.timeframe}
-              platform={study.data.platform}
-              isProtected={study.data.protected}
-              company={study.data.company}
-              logo={study.data.logo}
-              accent={study.data.accent}
-              cover={study.data.cover}
-            />
-          ))
-        }
-      </div>
+    <section class="grid" aria-label="Case studies">
+      {
+        caseStudies.map((study) => (
+          <CaseStudyCard
+            slug={study.id}
+            title={study.data.title}
+            summary={study.data.summary}
+            timeframe={study.data.timeframe}
+            platform={study.data.platform}
+            isProtected={study.data.protected}
+            company={study.data.company}
+            logo={study.data.logo}
+            accent={study.data.accent}
+            cover={study.data.cover}
+          />
+        ))
+      }
     </section>
   </main>
 </Layout>
 
 <style>
-  .hero {
-    background: #1a1a1e;
-    color: white;
-    padding: 6rem var(--space-3) 4rem;
-    margin-bottom: 4rem;
-  }
-
-  .hero-content {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
-    font-weight: 500;
-    margin: 0 0 1rem;
-    letter-spacing: -0.5px;
-  }
-
-  .hero-subtitle {
-    font-size: 1.125rem;
-    line-height: 1.7;
-    color: #c0c0c9;
-    margin: 0 0 2rem;
-    max-width: 580px;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .cta-primary {
-    background: #5a7cfc;
-    color: white;
-    padding: 0.875rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 8px 24px rgba(90, 124, 252, 0.3);
-  }
-
-  .cta-primary:hover {
-    background: #4a6bdd;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(90, 124, 252, 0.4);
-  }
-
-  .cta-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    padding: 0.875rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .cta-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-
   main {
     max-width: 1120px;
     margin: 0 auto;
-    padding: 0 var(--space-3) var(--space-5);
-  }
-
-  .work-section h2 {
-    font-size: 1.75rem;
-    font-weight: 500;
-    margin: 0 0 2rem;
-    color: var(--fg);
+    padding: var(--space-3);
   }
 
   .grid {
@@ -136,29 +45,6 @@ const caseStudies = (await getCollection("caseStudies")).sort(
   }
 
   @media (max-width: 700px) {
-    .hero {
-      padding: 3.5rem var(--space-3) 2.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-
-    .hero-cta {
-      flex-direction: column;
-    }
-
-    .cta-primary,
-    .cta-secondary {
-      width: 100%;
-      text-align: center;
-    }
-
     .grid {
       grid-template-columns: 1fr;
     }
