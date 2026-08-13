@@ -28,7 +28,7 @@ const { Content } = await render(entry);
     <span class="logo-chip">
       <img class="logo-mark page-logo" src={`/logos/${entry.data.logo}.png`} alt={entry.data.company} />
     </span>
-    <ClientPasswordGate>
+    <ClientPasswordGate isProtected={entry.data.protected}>
       <h1>{entry.data.title}</h1>
       <CaseStudyMeta
         timeframe={entry.data.timeframe}
