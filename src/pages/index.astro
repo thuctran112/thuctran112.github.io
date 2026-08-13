@@ -44,12 +44,6 @@ const caseStudies = (await getCollection("caseStudies")).sort(
     gap: var(--space-3);
   }
 
-  .card-wrapper.faded {
-    opacity: 0.4;
-    filter: grayscale(100%);
-    transition: all 0.3s ease;
-  }
-
   @media (max-width: 700px) {
     .grid {
       grid-template-columns: 1fr;
@@ -57,23 +51,38 @@ const caseStudies = (await getCollection("caseStudies")).sort(
   }
 </style>
 
-<script>
-  const grid = document.querySelector('.grid');
-  const cardWrappers = grid.querySelectorAll('.card-wrapper');
+<script is:inline>
+  function initCardHover() {
+    const grid = document.querySelector('.grid');
+    if (!grid) return;
 
-  cardWrappers.forEach((wrapper) => {
-    wrapper.addEventListener('mouseenter', () => {
-      cardWrappers.forEach((w) => {
-        if (w !== wrapper) {
-          w.classList.add('faded');
-        }
+    const cardWrappers = grid.querySelectorAll('.card-wrapper');
+
+    cardWrappers.forEach((wrapper) => {
+      wrapper.addEventListener('mouseenter', () => {
+        cardWrappers.forEach((w) => {
+          if (w !== wrapper) {
+            w.style.opacity = '0.4';
+            w.style.filter = 'grayscale(100%)';
+            w.style.transition = 'all 0.3s ease';
+          }
+        });
+      });
+
+      wrapper.addEventListener('mouseleave', () => {
+        cardWrappers.forEach((w) => {
+          w.style.opacity = '';
+          w.style.filter = '';
+          w.style.transition = '';
+        });
       });
     });
+  }
 
-    wrapper.addEventListener('mouseleave', () => {
-      cardWrappers.forEach((w) => {
-        w.classList.remove('faded');
-      });
-    });
-  });
+  // Initialize on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCardHover);
+  } else {
+    initCardHover();
+  }
 </script>
