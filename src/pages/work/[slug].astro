@@ -42,11 +42,13 @@ const { Content } = await render(entry);
       <div class="prose">
         <Content />
       </div>
-      <div class="project-info">
-        <p>
-          <strong>Note:</strong> The work shown here is confidential and cannot be shared in full detail. I'm happy to discuss my design process, approach, and the insights I gained from this project over a call. Feel free to reach out at <a href="mailto:yenthuc.tran112@gmail.com">yenthuc.tran112@gmail.com</a> to connect.
-        </p>
-      </div>
+      {entry.data.protected && (
+        <div class="project-info">
+          <p>
+            <strong>Note:</strong> The work shown here is confidential and cannot be shared in full detail. I'm happy to discuss my design process, approach, and the insights I gained from this project over a call. Feel free to reach out at <a href="mailto:yenthuc.tran112@gmail.com">yenthuc.tran112@gmail.com</a> to connect.
+          </p>
+        </div>
+      )}
     </ClientPasswordGate>
   </main>
 </Layout>
