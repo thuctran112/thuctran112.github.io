@@ -7,8 +7,8 @@ logo: chargepoint
 accent: "#7c97ab"
 cover: chargepoint-cover.jpg
 timeframe: "2025"
-role: Designer, part of a team with a researcher, a UI designer, another designer, and a product owner from ChargePoint
-team: Researcher, UI designer, another designer, product owner
+role: Designer
+team: Researcher, UI Designer, Designer, Product Owner
 projectType: Consumer mobility app, map and discovery feature
 platform: Mobile app
 users: EV drivers looking for available charging stations and nearby amenities

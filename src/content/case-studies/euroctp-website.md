@@ -8,7 +8,7 @@ accent: "#272c8c"
 cover: euroctp-cover.jpg
 timeframe: "2024"
 role: UX designer
-collaboration: Project Manager, engineer team, UX researcher
+collaboration: Project Manager, Engineering Team, UX Researcher
 projectType: Institutional website / information architecture
 platform: Web
 users: Multiple distinct personas, corporate stakeholders, institutional clients, contributors, retail investors, and an educational/general audience

@@ -8,7 +8,7 @@ accent: "#eb051a"
 cover: mastercard-cover.jpg
 timeframe: "2025"
 role: UX designer
-collaboration: Design Lead, engineering team, Designer
+collaboration: Design Lead, Engineering Team, Designer
 projectType: Internal product color palette / accessibility initiative
 platform: Web (internal tools)
 users: Internal design and engineering teams across 3 Mastercard products

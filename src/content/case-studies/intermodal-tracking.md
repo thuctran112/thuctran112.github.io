@@ -8,7 +8,7 @@ accent: "#4a5f74"
 cover: swift-cover.jpg
 timeframe: "2022–2023"
 role: Product designer
-team: Software Engineer, Project Manager, UX researcher, UI designer
+team: Software Engineer, Project Manager, UX Researcher, UI Designer
 projectType: Enterprise workflow redesign
 platform: Web
 users: Customer service and operations staff

@@ -8,7 +8,7 @@ accent: "#f55b02"
 cover: beni-cover.jpg
 timeframe: "Dec 2022 – Jan 2023"
 role: UX & visual designer, part of a 3-designer team (with 3 developers)
-team: 3 designers, 3 developers, 2 founder stakeholders
+team: 3 Designers, 3 Developers, 2 Founder Stakeholders
 projectType: Chrome browser extension, consumer product
 platform: Browser extension
 users: Online shoppers looking for secondhand alternatives while browsing retail sites
@@ -44,13 +44,10 @@ IDEATION
 ## Key decisions
 *Critical choices that shaped the project direction*
 
-**Research-driven filters:** Research showed users needed more filtering options than the original design. I expanded the filter system to match how users actually wanted to narrow results.
-
-**Mobile patterns in an extension:** Since the extension is mobile-sized, I applied mobile filter patterns instead of desktop conventions for better scannability.
-
-**Simplify after testing:** Usability testing revealed the design felt cluttered. The team removed structural elements and added whitespace to reduce distraction.
-
-**Tone and color for non-intrusive popup:** Used white + light pink for the reminder popup to feel soft and non-pushy, with a clear CTA button.
+- **Research-driven filters:** Research showed users needed more filtering options than the original design. I expanded the filter system to match how users actually wanted to narrow results.
+- **Mobile patterns in an extension:** Since the extension is mobile-sized, I applied mobile filter patterns instead of desktop conventions for better scannability.
+- **Simplify after testing:** Usability testing revealed the design felt cluttered. The team removed structural elements and added whitespace to reduce distraction.
+- **Tone and color for non-intrusive popup:** Used white + light pink for the reminder popup to feel soft and non-pushy, with a clear CTA button.
 
 
 ## The solution
