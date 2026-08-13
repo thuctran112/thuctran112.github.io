@@ -44,6 +44,18 @@ const caseStudies = (await getCollection("caseStudies")).sort(
     gap: var(--space-3);
   }
 
+  .grid > :hover ~ *,
+  .grid > *:has(~ :hover) {
+    opacity: 0.4;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+  }
+
+  .grid > :hover {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+
   @media (max-width: 700px) {
     .grid {
       grid-template-columns: 1fr;
