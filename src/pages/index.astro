@@ -52,38 +52,4 @@ const caseStudies = (await getCollection("caseStudies")).sort(
   }
 </style>
 
-<script is:inline>
-  function initCardHover() {
-    const grid = document.querySelector('.grid');
-    if (!grid) return;
-
-    const cardWrappers = grid.querySelectorAll('.card-wrapper');
-
-    cardWrappers.forEach((wrapper) => {
-      wrapper.addEventListener('mouseenter', () => {
-        cardWrappers.forEach((w) => {
-          if (w !== wrapper) {
-            w.style.opacity = '0.4';
-            w.style.filter = 'grayscale(100%)';
-            w.style.transition = 'all 0.3s ease';
-          }
-        });
-      });
-
-      wrapper.addEventListener('mouseleave', () => {
-        cardWrappers.forEach((w) => {
-          w.style.opacity = '';
-          w.style.filter = '';
-          w.style.transition = '';
-        });
-      });
-    });
-  }
-
-  // Initialize on page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCardHover);
-  } else {
-    initCardHover();
-  }
 </script>
